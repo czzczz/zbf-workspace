@@ -1,0 +1,12 @@
+{
+	"name": "@zbf/config-box",
+	"version": "1.0.1",
+	"description": "config-box",
+	"main": "./config/index.js",
+	"license": "MIT",
+	"devDependencies": {
+		"@commitlint/config-conventional": "^13.1.0",
+		"@typescript-eslint/eslint-plugin": "^4.28.5",
+		"@typescript-eslint/parser": "^4.28.5"
+	}
+}
