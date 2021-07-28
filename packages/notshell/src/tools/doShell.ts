@@ -54,9 +54,8 @@ export default async function queue(query: CommandQuery) {
 			const res = await doExec({ cmd, opt });
 			resultList[i] = res;
 			const { code, err } = res;
-			if (code === 0) 
-				log('成功', 'green');
-			 else {
+			if (code === 0) log('成功', 'green');
+			else {
 				log('失败', 'red');
 				log(err?.trim() || '', 'red');
 				return breakQueue(i);

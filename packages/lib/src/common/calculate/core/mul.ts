@@ -1,4 +1,4 @@
-import { typeOf } from '../../type';
+import { isString } from '../../type';
 import { NumberItem, NumberScope } from '../parse';
 import { HandlerParam, alignLeftAnRight, fixNumberStr } from './util';
 
@@ -6,8 +6,8 @@ export function mul(left: string, right: string): string;
 export function mul(left: NumberItem, right: NumberItem): NumberItem;
 export function mul(left: HandlerParam, right: HandlerParam): HandlerParam {
 	let returnStr = false;
-	if (typeOf.isString(left)) (returnStr = true), (left = new NumberItem(left));
-	if (typeOf.isString(right)) right = new NumberItem(right);
+	if (isString(left)) (returnStr = true), (left = new NumberItem(left));
+	if (isString(right)) right = new NumberItem(right);
 	const result = mulInner(left, right);
 	return returnStr ? result : new NumberItem(result);
 }

@@ -27,9 +27,8 @@ export default async function npmRegistry(registry?: string, opt: CommandConfigO
 		sh.echo(color.fail('chosed source not exit'));
 		return;
 	} else if (registryDict[opt.choose]) target = registryDict[opt.choose];
-	else 
-		registry && (target = registry);
-	
+	else registry && (target = registry);
+
 	const execOpt = { silent: true };
 
 	// 设置npm源

@@ -1,5 +1,3 @@
-import { typeOf } from '../common/type';
-
 interface CookieTool {
 	set: (
 		name: string,
@@ -13,11 +11,9 @@ interface CookieTool {
 	remove: (name: string) => void;
 }
 
-export default ((isBrowser: boolean): Readonly<CookieTool> => {
-	const doc = window.document;
+export const cookies = ((): Readonly<CookieTool> => {
 	function get(name: string): string | null {
-		if (!isBrowser) return null;
-		const [, value = null] = new RegExp(`(?:^|;)\\s*${name}=([^;]*)`).exec(doc.cookie) || [];
+		const [, value = null] = new RegExp(`(?:^|;)\\s*${name}=([^;]*)`).exec(window.document.cookie) || [];
 		return value;
 	}
 	function set(
@@ -28,9 +24,8 @@ export default ((isBrowser: boolean): Readonly<CookieTool> => {
 		secure = false,
 		path = '/',
 	): void {
-		if (!isBrowser) return;
 		const expires = new Date(Date.now() + age).toUTCString();
-		doc.cookie = `${name}=${val}; Expires=${expires}; Max-Age=${age}; SameSite=${sameSite}; ${
+		window.document.cookie = `${name}=${val}; Expires=${expires}; Max-Age=${age}; SameSite=${sameSite}; ${
 			secure ? 'Secure; ' : ''
 		}; path=${path}`;
 	}
@@ -38,4 +33,4 @@ export default ((isBrowser: boolean): Readonly<CookieTool> => {
 		return set(name, '', -1);
 	}
 	return { set, get, remove } as const;
-})(typeOf.isWindow(this));
+})();

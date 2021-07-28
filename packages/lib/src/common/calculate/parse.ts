@@ -1,4 +1,4 @@
-import { typeOf } from '../type';
+import { isString, isArray } from '../type';
 
 export enum NumberScope {
 	POSITIVE,
@@ -11,7 +11,7 @@ export class NumberItem {
 	decimal: string;
 
 	constructor(val: string | NumberItem) {
-		if (typeOf.isString(val)) {
+		if (isString(val)) {
 			if (/^([+-])/.test(val)) {
 				this.scope = RegExp.$1 === '-' ? NumberScope.NEGATIVE : NumberScope.POSITIVE;
 				val = val.slice(1);
@@ -72,8 +72,8 @@ export function splitToken(exp: string): ExpressionToken[] {
 export function buildRPNExp(exp: string): ExpressionToken[];
 export function buildRPNExp(tokens: ExpressionToken[]): ExpressionToken[];
 export function buildRPNExp(arg0: unknown): ExpressionToken[] {
-	if (typeOf.isString(arg0)) return buildRPNExpInner(splitToken(arg0));
-	else if (typeOf.isArray<ExpressionToken>(arg0)) return buildRPNExpInner(arg0);
+	if (isString(arg0)) return buildRPNExpInner(splitToken(arg0));
+	else if (isArray<ExpressionToken>(arg0)) return buildRPNExpInner(arg0);
 	else throw new Error('1000: input error');
 }
 

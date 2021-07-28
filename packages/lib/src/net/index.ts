@@ -1,3 +1,1 @@
-import cookies from './cookies';
-
-export { cookies };
+export * from './cookies';

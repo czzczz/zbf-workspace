@@ -1,11 +1,11 @@
 import { NumberItem, ExpressionToken } from './parse';
 import { CalculateHandler } from './core';
-import { typeOf } from '../type';
+import { isString } from '../type';
 
 export function traverseRPNExp(rpn: ExpressionToken[], handlers: CalculateHandler<NumberItem>): NumberItem {
 	const numStack: NumberItem[] = [];
 	for (const item of rpn)
-		if (!typeOf.isString(item)) numStack.push(item);
+		if (!isString(item)) numStack.push(item);
 		else
 			switch (item) {
 				case '(':

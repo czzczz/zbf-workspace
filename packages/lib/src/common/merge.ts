@@ -1,4 +1,4 @@
-import { typeOf } from './type';
+import { typeOf, isArray, isObject } from './type';
 import { deepCopy } from './deepCopy';
 
 type ArrayAction = 'concat' | 'override';
@@ -18,8 +18,8 @@ interface MergeConfig {
  * @returns {any} 目标对象，即tar
  */
 function assignDeep(tar: any, source: any, opt: Omit<MergeConfig, 'deep'> = { arrayAction: 'concat' }) {
-	const isObj = typeOf.isObject;
-	const isArr = typeOf.isArray;
+	const isObj = isObject;
+	const isArr = isArray;
 	if (typeOf(tar) !== typeOf(source)) return deepCopy(source); // 二者类型不一致，取source
 	if (!isObj(tar) && !isArr(tar)) return source; // 不是对象或数组，取souce
 	if (isArr(tar) && opt.arrayAction === 'concat') {
