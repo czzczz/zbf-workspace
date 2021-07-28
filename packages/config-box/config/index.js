@@ -3,4 +3,5 @@ module.exports = {
 	eslint: require('./eslint'),
 	commitlint: require('./commitlint'),
 	lintStaged: require('./lint-staged'),
+	jest: require('./jest'),
 };

@@ -35,6 +35,6 @@ module.exports = {
 		curly: [1, 'multi'],
 		'prefer-const': 1,
 		'@typescript-eslint/no-var-requires': 0,
-		'@typescript-eslint/no-namespace': 0,
+		'@typescript-eslint/no-namespace': 1,
 	},
 };

@@ -1,1 +1,1 @@
-export * from './className';
+export { addClass, hasClass, removeClass } from './className';
