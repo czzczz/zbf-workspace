@@ -2,6 +2,6 @@ test/
 .eslintrc.js
 .prettierrc.js
 tsconfig.json
-jest.config.json
+jest.config.js*
 rollup.config.js
 *-error.log

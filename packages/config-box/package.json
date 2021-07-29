@@ -20,9 +20,7 @@
 	"devDependencies": {
 		"@commitlint/config-conventional": "^13.1.0",
 		"@typescript-eslint/eslint-plugin": "^4.28.5",
-		"@typescript-eslint/parser": "^4.28.5"
-	},
-	"peerDependencies": {
+		"@typescript-eslint/parser": "^4.28.5",
 		"ts-jest": "^27.0.4"
 	}
 }

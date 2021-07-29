@@ -24,3 +24,5 @@ export { merge } from './merge';
 export { formatDate } from './formatDate';
 export { calculate } from './calculate';
 export { curry } from './curry';
+export { randomInt } from './math';
+export { at, lastItem } from './array';

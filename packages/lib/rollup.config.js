@@ -17,7 +17,7 @@ const commonConf = {
 		eslint({
 			throwOnError: true,
 			include: ['src/**/*.ts'],
-			exclude: ['node_modules/**', 'lib/**'],
+			exclude: ['node_modules/**', 'dist/**'],
 		}),
 		ts({
 			tsconfig: getPath('./tsconfig.json'), // 导入本地ts配置
