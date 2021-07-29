@@ -25,4 +25,4 @@ export { formatDate } from './formatDate';
 export { calculate } from './calculate';
 export { curry } from './curry';
 export { randomInt } from './math';
-export { at, lastItem } from './array';
+export { at, lastItem, range } from './array';
