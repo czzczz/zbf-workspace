@@ -10,7 +10,7 @@ const registryDict: Record<string, string> = {
 	rednpm: 'http://registry.mirror.cqupt.edu.cn',
 	skimdb: 'https://skimdb.npmjs.com/registry',
 	huawei: 'https://mirrors.huaweicloud.com/repository/npm/', // 华为
-	auto: 'http://www.npmjs.org', // 默认
+	auto: 'http://registry.npmjs.org', // 默认
 };
 
 export default async function npmRegistry(registry?: string, opt: CommandConfigOptions = {}) {
