@@ -1,6 +1,6 @@
 {
 	"name": "@zbf/lib",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"type": "module",
 	"description": "js dev tools",
 	"main": "./dist/index.js",

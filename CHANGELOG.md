@@ -1,3 +1,11 @@
+## 1.0.3 (2021-07-30)
+
+### Features
+
+-   EventBar,getStyle,LinkList ([9bac45c](https://github.com/czzczz/zbf-workspace/commit/9bac45c26b09322d740ca0c695987e0b157e3f43))
+-   新工具 at,lastItem,EventBar,randomInt ([6bd7ece](https://github.com/czzczz/zbf-workspace/commit/6bd7eceeab328c8efa6f63cb4740183e0bc49f80))
+-   新工具 range ([d04a9aa](https://github.com/czzczz/zbf-workspace/commit/d04a9aa85f99bebe98361884e2772778339dde19))
+
 ## 1.0.2 (2021-07-28)
 
 ### Bug Fixes

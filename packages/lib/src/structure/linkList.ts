@@ -6,9 +6,7 @@ export class LinkList<V = unknown> {
 
 	constructor(values?: V[] | LinkListNode<V> | LinkList<V> | null) {
 		if (isArray(values))
-			for (let i = values.length - 1; i + 1; i--) 
-				this.head = new LinkListNode(values[i], this.head);
-			
+			for (let i = values.length - 1; i + 1; i--) this.head = new LinkListNode(values[i], this.head);
 		else if (values instanceof LinkListNode) this.head = values;
 		else if (values instanceof LinkList) this.head = values.head;
 		else this.head = values ?? null;
