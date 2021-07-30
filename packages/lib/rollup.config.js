@@ -12,7 +12,7 @@ const extensions = ['.js', '.ts', '.tsx'];
 const commonConf = {
 	input: getPath('./src/index.ts'),
 	plugins: [
-		resolve(extensions),
+		resolve({ extensions }),
 		commonjs(),
 		eslint({
 			throwOnError: true,

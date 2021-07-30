@@ -23,3 +23,8 @@ export function randomInt(arg0: number, arg1?: number): number {
 	if (!arg1 || arg1 <= arg0) return Math.floor(Math.random() * arg0);
 	return Math.floor(Math.random() * (arg1 - arg0) + arg0);
 }
+
+export function toThousand(val: number | string) {
+	const [digit, decimal] = (val + '').split('.');
+	return digit.replace(/(\d)(?=(?:\d{3})+$)/g, '$1,') + (decimal ? '.' + decimal : '');
+}

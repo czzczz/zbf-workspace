@@ -16,7 +16,8 @@ export function range(arg0: number, arg1?: number, step = 1): number[] {
 
 function rangeInner(start: number, end: number, step: number): number[] {
 	if (start >= end) return [];
-	const res = [];
-	for (let i = start; i < end; i += step) res.push(i);
-	return res;
+	// const res = [];
+	// for (let i = start; i < end; i += step) res.push(i);
+	// return res;
+	return Array.from({ length: (end - start) / step }, (_, i) => start + i * step);
 }

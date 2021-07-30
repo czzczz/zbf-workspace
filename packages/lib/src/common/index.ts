@@ -7,3 +7,7 @@ export * from './curry';
 export * from './math';
 export * from './array';
 export * from './event';
+export * from './object';
+export * from './base64';
+export * from './delay';
+export * from './growId';
