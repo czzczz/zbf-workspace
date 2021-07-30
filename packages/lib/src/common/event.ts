@@ -44,21 +44,3 @@ export class EventBar<Event = unknown> {
 		this.onceMap.get(type)?.clear();
 	}
 }
-
-const globalEventBar = new EventBar();
-
-export function on(type: string, handler: EventHandler) {
-	globalEventBar.on(type, handler);
-}
-
-export function off(type: string, handler: EventHandler) {
-	globalEventBar.off(type, handler);
-}
-
-export function once(type: string, handler: EventHandler) {
-	globalEventBar.once(type, handler);
-}
-
-export function dispatch(type: string, payload: unknown) {
-	globalEventBar.dispatch(type, payload);
-}
