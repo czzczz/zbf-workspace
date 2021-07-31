@@ -1,3 +1,3 @@
-import { isArray } from '@zbf/lib';
+import { sameEls } from '@zbf/lib';
 
 console.log();

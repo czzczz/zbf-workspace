@@ -25,6 +25,7 @@ export const isRegExp = (val: unknown): val is RegExp => typeOf(val) === 'RegExp
 export const isSymbol = (val: unknown): val is symbol => typeOf(val) === 'Symbol';
 export const isJSON = (val: unknown): val is JSON => typeOf(val) === 'JSON';
 export const isMath = (val: unknown): val is Math => typeOf(val) === 'Math';
+export const isDate = (val: unknown): val is Date => typeOf(val) === 'Date';
 export const isWindow = (val: unknown): val is Window => typeOf(val) === 'Window';
 export const isGlobal = (val: unknown): val is typeof globalThis => typeOf(val) === 'global';
 export const isBigInt = (val: unknown): val is BigInt => typeOf(val) === 'BigInt';

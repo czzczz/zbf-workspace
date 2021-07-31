@@ -17,14 +17,15 @@ export class LinkList<V = unknown> {
 		let ps: LinkListNode<V> | null = this.head,
 			pf: LinkListNode<V> | null = this.head.next;
 		while (ps && pf) {
-			if (ps === pf) return true;
+			if (ps === pf) break;
 			ps = ps.next;
 			pf = pf.next?.next || null;
 		}
-		pf = this.head;
+		if (ps && ps !== pf) return false;
+		pf = this.head.next;
 		let entry: typeof ps = null;
 		while (pf !== ps) {
-			entry = pf;
+			entry = ps;
 			pf = pf!.next;
 			ps = ps!.next;
 		}

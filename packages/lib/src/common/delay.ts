@@ -7,7 +7,7 @@ export class DelayCenter {
 		this.ms = ms;
 	}
 
-	run(fn: () => void, key: string) {
+	register(fn: () => void, key?: string, ms?: number) {
 		key ||= 'default';
 		this.cancel(key);
 		this.map.set(
@@ -16,11 +16,11 @@ export class DelayCenter {
 				try {
 					fn();
 				} catch (e) {
-					console.error('delay error', e);
+					console.error('delay error', key, fn, e);
 				} finally {
 					this.cancel(key);
 				}
-			}, this.ms),
+			}, ms || this.ms),
 		);
 		return this;
 	}

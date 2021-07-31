@@ -10,6 +10,7 @@
 		"prebuild": "rm -rf ./dist",
 		"build": "set NODE_ENV=production&& rollup -c rollup.config.js",
 		"prettier": "prettier --write ./",
+		"test:report": "jest --coverage",
 		"test": "jest"
 	},
 	"repository": {
