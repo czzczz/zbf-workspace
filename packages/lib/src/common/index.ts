@@ -11,3 +11,5 @@ export * from './object';
 export * from './base64';
 export * from './delay';
 export * from './growId';
+export * from './file';
+export * from './promise';

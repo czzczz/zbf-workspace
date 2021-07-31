@@ -15,4 +15,7 @@ export const alignLeftAnRight = (
 };
 
 export const fixNumberStr = (str: string) =>
-	str.replace(/(\.\d+?)(0+)?$/, ($0, $1) => ($1 === '.0' ? '' : $1)).replace(/^(-?)(0+)(\d+?(\.|$))/, '$1$3');
+	str
+		.replace(/(\.\d+?)(0+)?$/, ($0, $1) => ($1 === '.0' ? '' : $1))
+		.replace(/^(-?)(0+)(\d+?(\.|$))/, '$1$3')
+		.replace(/^-0$/, '0');

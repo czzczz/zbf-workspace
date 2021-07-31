@@ -34,9 +34,9 @@ export const sameEls =
 		let res: T[] = arrList[0],
 			temp: T[] = [];
 		for (let i = 1; i < arrList.length; i++) {
-			for (let j = 0; j < arrList[i].length; j++) 
+			for (let j = 0; j < arrList[i].length; j++)
 				if (res.find(item => isEqual(item, arrList[i][j]))) temp.push(arrList[i][j]);
-			
+
 			res = temp;
 			temp = [];
 		}
