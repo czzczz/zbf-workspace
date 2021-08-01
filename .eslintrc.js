@@ -1,1 +1,1 @@
-module.exports = require('@zbf/config-box').eslint;
+module.exports = require('@zbf/config-box').esLintTs;

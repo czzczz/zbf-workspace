@@ -9,7 +9,7 @@ export class GrowId {
 		this.step = step;
 	}
 
-	next() {
+	next(): number {
 		return (this.current += this.step);
 	}
 }
@@ -23,7 +23,7 @@ export class GrowStringId {
 		this.step = step;
 	}
 
-	next() {
+	next(): string {
 		this.current = add(this.current, this.step + '');
 		return this.current;
 	}

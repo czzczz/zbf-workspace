@@ -24,7 +24,7 @@ export function randomInt(arg0: number, arg1?: number): number {
 	return Math.floor(Math.random() * (arg1 - arg0) + arg0);
 }
 
-export function toThousand(val: number | string) {
+export function toThousand(val: number | string): string {
 	const [digit, decimal] = (val + '').split('.');
 	return digit.replace(/(\d)(?=(?:\d{3})+$)/g, '$1,') + (decimal ? '.' + decimal : '');
 }

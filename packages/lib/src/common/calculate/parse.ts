@@ -24,21 +24,21 @@ export class NumberItem {
 		}
 	}
 
-	isNegative() {
+	isNegative(): boolean {
 		return this.scope === NumberScope.NEGATIVE;
 	}
 
-	negative() {
+	negative(): NumberItem {
 		const copy = this.clone();
 		copy.scope = this.scope ^ 1;
 		return copy;
 	}
 
-	clone() {
+	clone(): NumberItem {
 		return new NumberItem(this);
 	}
 
-	toString() {
+	toString(): string {
 		return `${this.scope === NumberScope.NEGATIVE ? '-' : ''}${this.integer}${
 			this.decimal.length ? '.' + this.decimal : ''
 		}`;
@@ -91,6 +91,7 @@ function buildRPNExpInner(tokens: ExpressionToken[]): ExpressionToken[] {
 				if (!last || last === '(' || priority[last] > ptk) {
 					opStack.push(tk);
 					break;
+					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 				} else res.push(opStack.pop()!);
 			} while (last);
 		} else if (tk === ')') {

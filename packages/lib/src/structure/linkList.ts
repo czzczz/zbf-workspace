@@ -12,7 +12,7 @@ export class LinkList<V = unknown> {
 		else this.head = values ?? null;
 	}
 
-	isCircle() {
+	isCircle(): boolean {
 		if (!this.head?.next) return false;
 		let ps: LinkListNode<V> | null = this.head,
 			pf: LinkListNode<V> | null = this.head.next;
@@ -26,8 +26,8 @@ export class LinkList<V = unknown> {
 		let entry: typeof ps = null;
 		while (pf !== ps) {
 			entry = ps;
-			pf = pf!.next;
-			ps = ps!.next;
+			pf = pf?.next || null;
+			ps = ps?.next || null;
 		}
 		this.circleEntry = entry;
 		return true;
@@ -47,7 +47,7 @@ export class LinkListNode<V = unknown> {
 		this.next = next ?? null;
 	}
 
-	copy() {
+	copy(): LinkListNode<V> {
 		return new LinkListNode<V>(this.val, this.next);
 	}
 

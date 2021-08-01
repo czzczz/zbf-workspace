@@ -7,7 +7,7 @@
  * @returns {string} 结果
  */
 export function typeOf(val: unknown): string {
-	const [, res] = /\b(\w+)]$/.exec({}.toString.call(val))!;
+	const [, res] = /\b(\w+)]$/.exec({}.toString.call(val)) || ['', ''];
 	return res;
 }
 
@@ -18,7 +18,8 @@ export const isSet = <T>(val: unknown): val is Set<T> => typeOf(val) === 'Set';
 export const isObject = (val: unknown): val is Record<string, unknown> => typeOf(val) === 'Object';
 export const isNull = (val: unknown): val is null => typeOf(val) === 'Null';
 export const isUndefined = (val: unknown): val is undefined => typeOf(val) === 'Undefined';
-export const isFunction = <T extends (...arg: unknown[]) => any>(val: unknown): val is T => typeOf(val) === 'Function';
+export const isFunction = <T extends (...arg: unknown[]) => unknown>(val: unknown): val is T =>
+	typeOf(val) === 'Function';
 export const isBoolean = (val: unknown): val is boolean => typeOf(val) === 'Boolean';
 export const isPromise = <T>(val: unknown): val is Promise<T> => typeOf(val) === 'Promise';
 export const isRegExp = (val: unknown): val is RegExp => typeOf(val) === 'RegExp';

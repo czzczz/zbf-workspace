@@ -10,7 +10,7 @@
  * @param {(...args: [...Params,(err: ErrType, res: ResType) => void]) => Return} fn 要转换的函数，参数列表最后一项必须为有两个参数(err,res)的回调函数
  */
 export const promisify =
-	<Params extends any[], Return = void, ErrType = unknown, ResType = unknown>(
+	<Params extends unknown[], Return = void, ErrType = unknown, ResType = unknown>(
 		fn: (
 			...args: [
 				// Params为tuple类型，用于推断参数列表
@@ -20,7 +20,7 @@ export const promisify =
 			]
 		) => Return,
 	) =>
-	(...args: Params) => {
+	(...args: Params): Promise<{ res: ResType; rt?: Return }> => {
 		return new Promise<{ res: ResType; rt?: Return }>((resolve, reject) => {
 			try {
 				const result = fn(...args, (err: ErrType, res: ResType) => {

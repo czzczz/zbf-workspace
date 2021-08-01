@@ -7,7 +7,7 @@ export class DelayCenter {
 		this.ms = ms;
 	}
 
-	register(fn: () => void, key?: string, ms?: number) {
+	register(fn: () => void, key?: string, ms?: number): DelayCenter {
 		key ||= 'default';
 		this.cancel(key);
 		this.map.set(
@@ -25,7 +25,7 @@ export class DelayCenter {
 		return this;
 	}
 
-	cancel(key?: string) {
+	cancel(key?: string): DelayCenter {
 		key ||= 'default';
 		if (this.map.has(key)) {
 			clearTimeout(this.map.get(key) as Parameters<typeof clearTimeout>[0]);

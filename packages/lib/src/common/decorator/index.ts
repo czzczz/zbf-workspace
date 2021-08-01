@@ -1,8 +1,9 @@
-export function deco_class(Class: typeof AAA) {
+export function deco_class(Class: typeof AAA): void {
 	console.log('1', Class);
 }
 export function deco_class2() {
-	return function (Class: typeof AAA) {
+	// eslint-disable-next-line
+	return function (Class: typeof AAA): void {
 		console.log(2);
 	};
 }

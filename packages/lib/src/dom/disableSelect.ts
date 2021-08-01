@@ -1,6 +1,6 @@
 import { isBrowser } from 'env';
 
-export function disableSelect() {
+export function disableSelect(): void {
 	if (!isBrowser()) return;
 	['contextmenu', 'selectstart', 'copy'].forEach(event => {
 		document.addEventListener(event, e => {

@@ -17,8 +17,8 @@ export function addInner(left: NumberItem, right: NumberItem): string {
 	let carry = 0,
 		isCarry = false,
 		vLeft,
-		vRight,
-		result: (number | string)[] = [];
+		vRight;
+	const result: (number | string)[] = [];
 	if (!isBorrow) {
 		for (let k = bigLeft.length - 1; k > -1; k--) {
 			vLeft = +bigLeft[k];

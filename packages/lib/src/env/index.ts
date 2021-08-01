@@ -1,12 +1,19 @@
-export function isBrowser() {
+export function isBrowser(): boolean {
 	return typeof window === 'object';
 }
 
-export function getGlobalThis() {
+export function getGlobalThis(): typeof globalThis | Window {
 	return isBrowser() ? window : global;
 }
 
-export function getOS(ua?: string) {
+export function getOS(ua?: string): null | Readonly<{
+	mobile: boolean;
+	pc: boolean;
+	android: boolean;
+	ios: boolean;
+	tablet: boolean;
+	chrome: boolean;
+}> {
 	if (!isBrowser()) return null;
 	ua = ua || window.navigator.userAgent;
 	const isWindowsPhone = /(?:Windows Phone)/.test(ua);

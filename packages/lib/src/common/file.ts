@@ -2,7 +2,7 @@ import { isBrowser } from 'env';
 import { b64ToUtf8 } from './base64';
 import { isArray } from './type';
 
-export function downloadFile(filename: string, content: BlobPart | BlobPart[]) {
+export function downloadFile(filename: string, content: BlobPart | BlobPart[]): HTMLIFrameElement | null {
 	if (!isBrowser()) return null;
 	const blob = new Blob(isArray(content) ? content : [content]);
 	const download = document.createElement('iframe');
@@ -13,7 +13,7 @@ export function downloadFile(filename: string, content: BlobPart | BlobPart[]) {
 	return body.appendChild(download);
 }
 
-export function displayVideo(playerEl: HTMLVideoElement) {
+export function displayVideo(playerEl: HTMLVideoElement): void {
 	const URL = window.URL || window.webkitURL;
 	const xhr = new XMLHttpRequest();
 	xhr.open('GET', 'images/mp4.mp4', true);
@@ -29,7 +29,7 @@ export function displayVideo(playerEl: HTMLVideoElement) {
 	xhr.send();
 }
 
-export function dataURLtoBlob(data: string) {
+export function dataURLtoBlob(data: string): Blob | null {
 	const [prefix, base64Str] = data.split(',');
 	const mime = prefix.match(/:(.*?);/)?.[1];
 	if (!mime) return console.error('mime not found'), null;
@@ -40,12 +40,12 @@ export function dataURLtoBlob(data: string) {
 	return new Blob([u8Arr], { type: mime });
 }
 
-export function dataURLtoFile(data: string, filename: string) {
+export function dataURLtoFile(data: string, filename: string): File | null {
 	const blob = dataURLtoBlob(data);
 	return blob && new File([blob], filename, { type: blob.type });
 }
 
-export function blobToDataURL(blob: Blob, callback: (e: any) => void) {
+export function blobToDataURL(blob: Blob, callback: (e: unknown) => void): void {
 	const a = new FileReader();
 	a.onload = function (e) {
 		callback(e.target);

@@ -29,8 +29,8 @@ export async function findAllByName(name: string, flag: sh.TestOptions = '-f'): 
 	return res;
 }
 
-export async function writeFile(filename: string, content: string) {
-	return new Promise<boolean>((resolve, reject) => {
+export async function writeFile(filename: string, content: string): Promise<boolean> {
+	return new Promise<boolean>(resolve => {
 		fs.accessSync(filename);
 		resolve(false);
 	}).catch(() => {

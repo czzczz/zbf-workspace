@@ -4,7 +4,7 @@ export function isFalsy(target: unknown): target is Falsy {
 	return !target;
 }
 
-export function toTuple<T extends any[]>(...arr: T) {
+export function toTuple<T extends unknown[]>(...arr: T): T {
 	return arr;
 }
 
