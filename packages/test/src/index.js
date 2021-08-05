@@ -1,3 +1,8 @@
-import { sameEls } from '@zbf/lib';
+import { yieldPromise } from '@zbf/lib';
 
-console.log();
+console.log(
+	yieldPromise(function* () {
+		yield true;
+		return false;
+	}),
+);

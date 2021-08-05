@@ -35,4 +35,12 @@ describe('promise', () => {
 		}
 		expect(await yieldPromise(gen.bind(this, 3))).toBe('51');
 	});
+	test('yieldPromise params', async () => {
+		function* gen(param: number) {
+			const value: number = yield param + 1;
+			const d: string = yield Promise.resolve(value + 1 + '');
+			return d + 1;
+		}
+		expect(await yieldPromise(gen, 1).then(val => val)).toBe('31');
+	});
 });

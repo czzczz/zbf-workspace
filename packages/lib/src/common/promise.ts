@@ -83,13 +83,14 @@ export const queuePromise = <
  * @param {() => Generator<T, TReturn, TNext>} fn 要转换的函数
  * @returns {Promise<TReturn>}
  */
-export const yieldPromise = <T, TReturn, TNext>(
+export const yieldPromise = <T, TReturn, TNext, Params extends [] | [unknown]>(
 	// 使用yield实现async await 的功能
-	fn: () => Generator<T, TReturn, TNext>,
+	fn: (...args: Params) => Generator<T, TReturn, TNext>,
+	...params: Params
 ): Promise<TReturn> =>
 	new Promise((resolve, reject) => {
 		try {
-			const generator = fn();
+			const generator = fn(...params);
 			const call = (val?: TNext) => {
 				const { done, value } = generator.next(val as TNext);
 				if (done) return resolve(value as TReturn);
