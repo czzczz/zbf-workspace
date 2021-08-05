@@ -28,3 +28,11 @@ export function toThousand(val: number | string): string {
 	const [digit, decimal] = (val + '').split('.');
 	return digit.replace(/(\d)(?=(?:\d{3})+$)/g, '$1,') + (decimal ? '.' + decimal : '');
 }
+
+export function average(...values: number[]): number {
+	return values.reduce((c, v) => c + v) / values.length;
+}
+
+export function averageInt(...values: number[]): number {
+	return ~~average(...values);
+}

@@ -10,6 +10,13 @@ export function toTuple<T extends unknown[]>(...arr: T): T {
 
 export type Nullable<T> = T | null;
 
+export type Optional<T> = T | null | undefined;
+
+export type Required<T> = T extends null | undefined ? never : T;
+
+// type O = Optional<number>;
+// type D = Required<O>;
+
 // export type Params<T extends (...arg: any) => any> = T extends (...arg: infer P) => any ? P : never;
 
 // const fn = (v: number, d: string) => v + d;

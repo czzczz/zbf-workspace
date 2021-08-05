@@ -35,3 +35,70 @@ export const promisify =
 			}
 		});
 	};
+
+type AsyncFunction<Params extends unknown[] | void = unknown[], Res = unknown> = Params extends unknown[]
+	? (...args: Params) => Promise<Res>
+	: () => Promise<Res>;
+
+/**
+ * 排队执行所有Promise任务，前一个任务返回值作为后一个任务的参数，
+ *
+ * 最后一个参数的返回值作为整体的返回值
+ *
+ * @function queuePromise
+ * @author czzczz
+ * @template Res
+ * @template Params
+ * @template GoingRes
+ * @template CallbackList
+ * @param {[...CallbackList, AsyncFunction<unknown[], Res>]} [...list] 所有要排队执行的任务
+ * @returns {Promise<Res>} 返回值
+ */
+export const queuePromise = <
+	Res = unknown,
+	Params extends unknown[] = unknown[],
+	GoingRes = unknown,
+	CallbackList extends AsyncFunction<Params, GoingRes>[] = [],
+>(
+	...list: [...CallbackList, AsyncFunction<unknown[], Res>]
+): Promise<Res> =>
+	new Promise((resolve, reject) => {
+		const last = list.pop();
+		let cur = list[0]().catch(reject),
+			res: Promise<Res>;
+		for (let i = 1; i < list.length; i++) cur = cur.then(val => list[i](val) as unknown as GoingRes, reject);
+		if (last) (res = cur.then(val => last(val as unknown) as unknown as Res)) as unknown as Promise<Res>;
+		else return reject('last not provided');
+		res.then(resolve, reject);
+	});
+
+/**
+ * 使用yield实现 async await 的功能
+ *
+ * @function yieldPromise
+ * @author czzczz
+ * @template T
+ * @template TReturn
+ * @template TNext
+ * @param {() => Generator<T, TReturn, TNext>} fn 要转换的函数
+ * @returns {Promise<TReturn>}
+ */
+export const yieldPromise = <T, TReturn, TNext>(
+	// 使用yield实现async await 的功能
+	fn: () => Generator<T, TReturn, TNext>,
+): Promise<TReturn> =>
+	new Promise((resolve, reject) => {
+		try {
+			const generator = fn();
+			const call = (val?: TNext) => {
+				const { done, value } = generator.next(val as TNext);
+				if (done) return resolve(value as TReturn);
+				Promise.resolve(value)
+					.then(val => call(val as unknown as TNext))
+					.catch(reject);
+			};
+			call();
+		} catch (e) {
+			reject(e);
+		}
+	});

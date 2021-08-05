@@ -1,4 +1,4 @@
-import { randomInt as random, toThousand } from './math';
+import { average, averageInt, randomInt as random, toThousand } from './math';
 
 describe('math tool', () => {
 	test('random range', () => {
@@ -21,5 +21,12 @@ describe('math tool', () => {
 		expect(toThousand(1234)).toBe('1,234');
 		expect(toThousand(1234567)).toBe('1,234,567');
 		expect(toThousand(1234567.123124)).toBe('1,234,567.123124');
+	});
+
+	test('average', () => {
+		expect(average(1, 2, 3)).toBe(2);
+		expect(average(1, 2)).toBe(1.5);
+		expect(averageInt(1, 2, 3)).toBe(2);
+		expect(averageInt(1, 2)).toBe(1);
 	});
 });
