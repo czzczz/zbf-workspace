@@ -1,3 +1,17 @@
+## 1.0.4 (2021-08-06)
+
+### Bug Fixes
+
+-   notshell 登陆问题 ([4ac372e](https://github.com/czzczz/zbf-workspace/commit/4ac372e424e09479821d991dfb58058b16b12582))
+
+### Features
+
+-   0731,file.ts,promisify ([e656282](https://github.com/czzczz/zbf-workspace/commit/e656282043be9db98cd02d55642bea03fa7a32df))
+-   average,queuePromise,yieldPromise,fetchCenter ([d030c58](https://github.com/czzczz/zbf-workspace/commit/d030c58286fa930f5f496b18f2001f5e3a617341))
+-   linkList,sameEls,isDate ([771aef2](https://github.com/czzczz/zbf-workspace/commit/771aef288b79690306d2298be3e58ab8ed6d80aa))
+-   notify,report,storage,range,base64,delay,growId,toThousand,hasOwn,disableSelect,isBrowser,getGlobalThis ([ebeaf31](https://github.com/czzczz/zbf-workspace/commit/ebeaf3199ae293dcb1bee1a33704c42ac2b8a740))
+-   yieldPromise params ([9ac200c](https://github.com/czzczz/zbf-workspace/commit/9ac200cda34b05aa8c85dfcb0545d892fc3391f6))
+
 ## 1.0.3 (2021-07-30)
 
 ### Features
