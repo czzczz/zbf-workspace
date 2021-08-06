@@ -25,9 +25,9 @@
 	},
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/czzczz/-zbf-lib/issues"
+		"url": "https://github.com/czzczz/zbf-workspace/issues"
 	},
-	"homepage": "https://github.com/czzczz/-zbf-lib#readme",
+	"homepage": "https://github.com/czzczz/zbf-workspace#readme",
 	"devDependencies": {
 		"@rollup/plugin-commonjs": "^19.0.2",
 		"@rollup/plugin-json": "^4.1.0",

@@ -8,7 +8,7 @@
 		"webpack-cli": "^4.7.2"
 	},
 	"dependencies": {
-		"@zbf/lib": "^1.0.1"
+		"@zbf/lib": "*"
 	},
 	"scripts": {
 		"build": "webpack"

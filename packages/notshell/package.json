@@ -28,6 +28,10 @@
 		"email": "chanzrz_zbf@foxmail.com",
 		"url": "https://github.com/czzczz"
 	},
+	"bugs": {
+		"url": "https://github.com/czzczz/zbf-workspace/issues"
+	},
+	"homepage": "https://github.com/czzczz/zbf-workspace#readme",
 	"license": "ISC",
 	"dependencies": {},
 	"devDependencies": {
