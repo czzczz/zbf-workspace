@@ -1,4 +1,4 @@
-import { typeOf } from './type';
+import { typeOf } from '../type';
 /**
  * 深拷贝对象
  *

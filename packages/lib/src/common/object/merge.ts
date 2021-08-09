@@ -1,4 +1,4 @@
-import { typeOf, isArray, isObject } from './type';
+import { typeOf, isArray, isObject } from '../type';
 import { deepCopy } from './deepCopy';
 
 type ArrayAction = 'concat' | 'override';
