@@ -1,6 +1,6 @@
 {
 	"name": "@zbf/config-box",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "config-box",
 	"main": "./config/index.js",
 	"repository": {
@@ -25,6 +25,7 @@
 		"@commitlint/config-conventional": "^13.1.0",
 		"@typescript-eslint/eslint-plugin": "^4.28.5",
 		"@typescript-eslint/parser": "^4.28.5",
+		"stylelint-config-standard": "^22.0.0",
 		"ts-jest": "^27.0.4"
 	}
 }

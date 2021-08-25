@@ -14,6 +14,8 @@ export type Optional<T> = T | null | undefined;
 
 export type Required<T> = T extends null | undefined ? never : T;
 
+export type SingleOrArray<T> = T | T[];
+
 // type O = Optional<number>;
 // type D = Required<O>;
 

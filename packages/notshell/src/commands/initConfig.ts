@@ -3,24 +3,27 @@ import { CommandConfigOptions } from '.';
 import queue from '../tools/doShell';
 import { writeFile } from '../tools/fileDir';
 
-function createConfigFiles() {
-	const configs = {
+function createConfigFiles(options: CommandConfigOptions) {
+	const configs: Record<string, string> = {
 		'.prettierrc.js': "module.exports = require('@zbf/config-box').prettier;",
 		'.eslintrc.js': "module.exports = require('@zbf/config-box').eslint;",
 		'.lintstagedrc.js': "module.exports = require('@zbf/config-box').lintStaged;",
 		'commitlint.config.js': "module.exports = require('@zbf/config-box').commitlint;",
 		'jest.config.js': "import config from '@zbf/config-box';\nexport default config.jest;",
 	};
+	if (options.style) configs['stylelint.config.js'] = "module.exports = require('@zbf/config-box').style;";
 	console.log(`configs`, configs);
 	Object.keys(configs).forEach(k => writeFile(k, configs[k as keyof typeof configs]));
 }
 
-export default async function initConfig(options: CommandConfigOptions) {
-	createConfigFiles();
+export default async function initConfig(options: CommandConfigOptions): Promise<void> {
+	createConfigFiles(options);
 	await queue({
 		cmdList: [
 			'npm i -g npm yarn',
-			'yarn add -D husky@7 @commitlint/cli lint-staged conventional-changelog-cli @zbf/config-box eslint prettier jest ts-jest',
+			`yarn add -D husky@7 @commitlint/cli lint-staged conventional-changelog-cli @zbf/config-box eslint prettier jest ts-jest ${
+				options.style ? 'stylelint stylelint-scss stylelint-webpack-plugin' : ''
+			}`,
 			'npm set-script prepare "husky install" && yarn prepare',
 			'npm set-script eslint "eslint --fix ./"',
 			'npm set-script prettier "prettier --write \\"./**/*.{js,jsx,vue,ts,tsx,md,json,yaml,yml,xml,html,css,scss,less}\\""',

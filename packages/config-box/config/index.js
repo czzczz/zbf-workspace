@@ -5,4 +5,5 @@ module.exports = {
 	commitlint: require('./commitlint'),
 	lintStaged: require('./lint-staged'),
 	jest: require('./jest'),
+	style: require('./stylelint'),
 };

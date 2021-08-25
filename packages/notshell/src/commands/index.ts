@@ -22,6 +22,9 @@ const commands: CommandConfigItem[] = [
 			name: 'initConfig',
 			description: 'init project config files',
 			alias: 'ic',
+			options: {
+				'--style': 'init styleLint',
+			},
 		},
 		handler: require('./initConfig').default,
 	},
