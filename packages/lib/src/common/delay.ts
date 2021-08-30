@@ -34,3 +34,39 @@ export class DelayCenter {
 		return this;
 	}
 }
+
+export function debounce<Args extends unknown[], Ret extends unknown>(
+	fn: (...args: Args) => Ret,
+	timeout = 500,
+): (...args: Args) => void {
+	let flag: number | null = null;
+	return (...args: Args) => {
+		if (flag != null) clearTimeout(flag);
+		flag = setTimeout(() => {
+			try {
+				fn(...args);
+			} catch (e) {
+				console.error(e);
+			}
+		}, timeout) as unknown as number;
+	};
+}
+
+export function throttle<Args extends unknown[], Ret extends unknown>(
+	fn: (...args: Args) => Ret,
+	timeout = 500,
+): (...args: Args) => void {
+	let flag: number | null = null;
+	return (...args: Args) => {
+		if (flag != null) return;
+		flag = setTimeout(() => {
+			try {
+				fn(...args);
+			} catch (e) {
+				console.error(e);
+			} finally {
+				flag = null;
+			}
+		}, timeout) as unknown as number;
+	};
+}
