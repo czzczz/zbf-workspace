@@ -9,4 +9,4 @@ export function hasOwn(obj: unknown, key: string): boolean {
 	return Object.prototype.hasOwnProperty.call(obj, key);
 }
 
-export const EMPTY_OBJ: { readonly [key: string]: unknown } = Object.freeze({});
+export const EMPTY_OBJ: { readonly [key: string]: never } = Object.freeze({});
