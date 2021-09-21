@@ -1,3 +1,5 @@
+import { NOOP } from 'common';
+
 /**
  * 把error-first风格的回调函数转为promise风格
  *
@@ -103,3 +105,19 @@ export const yieldPromise = <T, TReturn, TNext, Params extends [] | [unknown]>(
 			reject(e);
 		}
 	});
+
+type NextFn = () => void | Promise<void>;
+type Middleware<Context> = (ctx: Context, next: NextFn) => void | Promise<void>;
+
+export function composeMiddleware<Context>(...list: Middleware<Context>[]): Middleware<Context> {
+	return async (ctx: Context, next: NextFn) => {
+		await list.reduceRight(
+			// 合并所有中间件
+			(next, mid) => async () => {
+				mid(ctx, next as NextFn);
+			},
+			NOOP,
+		)(ctx, NOOP);
+		await next();
+	};
+}

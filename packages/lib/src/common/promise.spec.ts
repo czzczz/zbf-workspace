@@ -1,3 +1,4 @@
+import { composeMiddleware, NOOP } from 'common';
 import { promisify, queuePromise, yieldPromise } from './promise';
 
 describe('promise', () => {
@@ -42,5 +43,30 @@ describe('promise', () => {
 			return d + 1;
 		}
 		expect(await yieldPromise(gen, 1).then(val => val)).toBe('31');
+	});
+
+	test('composeKoaMiddleware', async () => {
+		const arr: string[] = [];
+		type Ctx = { name: string };
+		const mid1 = async (ctx: Ctx, next: () => void) => {
+			arr.push('1 start');
+			await next();
+			arr.push('1 end' + ctx.name);
+		};
+		const mid2 = async (ctx: Ctx, next: () => void) => {
+			arr.push('2 start');
+			await next();
+			arr.push('2 end');
+		};
+		const mid3 = async (ctx: Ctx, next: () => void) => {
+			arr.push('3 start');
+			await next();
+			arr.push('3 end');
+		};
+		const res = composeMiddleware(mid1, mid2, mid3);
+		await res({ name: '123' }, () => {
+			arr.push('done');
+		});
+		expect(arr).toEqual(['1 start', '2 start', '3 start', '3 end', '2 end', '1 end123', 'done']);
 	});
 });
