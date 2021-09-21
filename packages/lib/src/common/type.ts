@@ -11,7 +11,7 @@ export function typeOf(val: unknown): string {
 	return res;
 }
 
-type ValueTypes =
+export type ValueTypes =
 	| 'Number'
 	| 'String'
 	| 'Array'
