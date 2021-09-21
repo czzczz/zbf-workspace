@@ -11,32 +11,29 @@ export function typeOf(val: unknown): string {
 	return res;
 }
 
-enum Types {
-	Number = 'Number',
-	String = 'String',
-	Array = 'Array',
-	Set = 'Set',
-	WeakSet = 'WeakSet',
-	Map = 'Map',
-	WeakMap = 'WeakMap',
-	Object = 'Object',
-	Null = 'Null',
-	Undefined = 'Undefined',
-	Function = 'Function',
-	AsyncFunction = 'AsyncFunction',
-	Boolean = 'Boolean',
-	Promise = 'Promise',
-	RegExp = 'RegExp',
-	Symbol = 'Symbol',
-	JSON = 'JSON',
-	Math = 'Math',
-	Date = 'Date',
-	Window = 'Window',
-	global = 'global',
-	BigInt = 'BigInt',
-}
-
-typeOf.types = Types;
+type ValueTypes =
+	| 'Number'
+	| 'String'
+	| 'Array'
+	| 'Set'
+	| 'WeakSet'
+	| 'Map'
+	| 'WeakMap'
+	| 'Object'
+	| 'Null'
+	| 'Undefined'
+	| 'Function'
+	| 'AsyncFunction'
+	| 'Boolean'
+	| 'Promise'
+	| 'RegExp'
+	| 'Symbol'
+	| 'JSON'
+	| 'Math'
+	| 'Date'
+	| 'Window'
+	| 'global'
+	| 'BigInt';
 
 export const isNumber = (val: unknown): val is number => typeOf(val) === 'Number';
 export const isString = (val: unknown): val is string => typeOf(val) === 'String';
@@ -51,7 +48,7 @@ export const isObject = (val: unknown): val is Record<string, unknown> => typeOf
 export const isNull = (val: unknown): val is null => typeOf(val) === 'Null';
 export const isUndefined = (val: unknown): val is undefined => typeOf(val) === 'Undefined';
 export const isFunction = <T extends (...arg: unknown[]) => unknown>(val: unknown): val is T =>
-	typeOf(val) === 'Function';
+	typeOf(val) === 'Function' || isAsyncFunction(val);
 export const isAsyncFunction = <T extends (...arg: unknown[]) => unknown>(val: unknown): val is T =>
 	typeOf(val) === 'AsyncFunction';
 export const isBoolean = (val: unknown): val is boolean => typeOf(val) === 'Boolean';

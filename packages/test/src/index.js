@@ -1,8 +1,3 @@
-import { yieldPromise } from '@zbf/lib';
+import { composeMiddleware } from '@zbf/lib';
 
-console.log(
-	yieldPromise(function* () {
-		yield true;
-		return false;
-	}),
-);
+console.log(composeMiddleware());
